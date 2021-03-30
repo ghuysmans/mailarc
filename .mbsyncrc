@@ -1,0 +1,16 @@
+IMAPAccount account
+Host "mail.example.com"
+SSLType IMAPS
+User "me@example.com"
+Pass "secret"
+
+IMAPStore example
+Account account
+
+MaildirStore local
+
+Channel sync
+Master :example:
+Slave :local:
+Sync Pull PushDelete
+Expunge Master

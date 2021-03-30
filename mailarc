@@ -1,0 +1,9 @@
+#!/bin/sh
+mkdir -p ~/Mailarc/cur
+
+#find ~/Maildir/cur -size +300k -exec "mv {} ~/Mailarc/cur/" \;
+
+notmuch new
+notmuch search --output=files date:"..2M" |xargs -I '{}' mv '{}' ~/Mailarc/cur/
+mbsync sync
+notmuch new
